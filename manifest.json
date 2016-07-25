@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+
+    "name": "vocab",
+    "description": "search words from vocabulary.com",
+    "version": "1.0",
+
+    "icons": {
+        "16": "vocab_16.png",
+        "48": "vocab_48.png"
+    },
+
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "contextMenus",
+        "tabs",
+        "http://www.vocabulary.com/*",
+        "http://app.vocabulary.com/*",
+        "*://*/*"
+    ],
+    "content_scripts":[{
+      "all_frames": true,
+      "js": [ "js/content.js" ],
+      "matches": [ "http://*/*", "https://*/*", "\u003Call_urls>" ],
+      "run_at": "document_start"
+
+    }],
+    "web_accessible_resources": ["css/content.css"]
+}
