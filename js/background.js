@@ -44,11 +44,12 @@ var Vocab = (function() {
         // tab that called the extension
     obj.API = 'http://app.vocabulary.com/app/1.0/dictionary/search?word='
     obj.currentTab = -1
-
-    chrome.contextMenus.create({
-        title: 'Call vocabulary.com',
-        id: '#lookup',
-        contexts: ['selection'],
+    chrome.runtime.onInstalled.addListener(function(){
+        chrome.contextMenus.create({
+            title: 'Call vocabulary.com',
+            id: '#vocab-lookup',
+            contexts: ['selection'],
+        })
     })
 
     chrome.contextMenus.onClicked.addListener(function(info) {
